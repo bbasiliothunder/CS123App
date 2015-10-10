@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+		<link rel='stylesheet' type='text/css' href='/resources/tutorial/css/example.css'>
+		</head>
+	
+	<body>
+		<div id='tableping'></div>
+		<input type='text' id='tableInput' placeholder='Table'>
+    
+		
+		<script>
+			var dbRef = new Firebase('https://orderingsystem.firebaseio.com/');
+			
+			 $('#tableInput').keypress(function (e) {
+				if (e.keyCode == 13) {
+				  var table_no = $('#tableInput').val();
+				  dbRef.push({table_no: table_no});
+				  $('#tableInput').val('');
+				}
+			  });
+			dbRef.on('child_added', function(snapshot) {
+				var ping = snapshot.val();
+				displayPing(ping.table_no);
+			});
+			
+			function displayPing(table_no) {
+				$('<div/>').text(table_no).appendTo($('#tableping'));
+				$('#tableping')[0].scrollTop = $('#tableping')[0].scrollHeight;
+			};
+		</script>
+	</body>
+</html>
