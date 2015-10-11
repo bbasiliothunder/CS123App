@@ -3,18 +3,47 @@
 	<head>
 		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 		<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-		<link rel='stylesheet' type='text/css' href='/resources/tutorial/css/example.css'>
+		<script src='/lib/js/bootstrap.min.js'></script>
+		<link rel='stylesheet' type='text/css' href='/lib/css/bootstrap.min.css'>
+		<link rel='stylesheet' type='text/css' href='/lib/css/bootstrap-theme.min.css'>
 		</head>
 	
 	<body>
 		<div id='tableping'></div>
 		<input type='text' id='tableInput' placeholder='Table'>
+		<p>
+		<input type='text' id='passInput' placeholder='Table'>
     
 		
 		<script>
 			var dbRef = new Firebase('https://orderingsystem.firebaseio.com/');
 			
-			 $('#tableInput').keypress(function (e) {
+			
+			// making user
+			/*dbRef.createUser({
+				email: "nina@compsat.org",
+				password: "password"
+			}, function(error, userData) {
+				if (error) {
+					switch (error.code) {
+						case "EMAIL_TAKEN":
+							console.log("The new user account cannot be created because the email is already in use.");
+							break;
+						case "INVALID_EMAIL":
+							console.log("The specified email is not a valid email.");
+							break;
+						default:
+							console.log("Error creating user:", error);
+					}
+				}
+				else {
+					console.log("Successfully created user account with uid:", userData.uid);
+				}
+			});*/
+			
+			
+			// testing the ping system
+			$('#tableInput').keypress(function (e) {
 				if (e.keyCode == 13) {
 				  var table_no = $('#tableInput').val();
 				  dbRef.push({table_no: table_no});
@@ -30,6 +59,31 @@
 				$('<div/>').text(table_no).appendTo($('#tableping'));
 				$('#tableping')[0].scrollTop = $('#tableping')[0].scrollHeight;
 			};
+			
+			
+			
+			
+			//testing authentication
+			
+			$('#passInput').keypress(function (e) {
+				if (e.keyCode == 13) {
+					var pw = $('#passInput').val();
+					dbRef.authWithPassword({
+						"email": "nina@compsat.org",
+						"password": pw
+					}, function(error, authData) {
+						if (error) {
+							console.log("Login Failed!", error);
+						}
+						else {
+							console.log("Authenticated successfully with payload:", authData);
+						}
+					});
+					$('#passInput').val('');
+				}
+			});
+			
+			
 		</script>
 	</body>
 </html>
