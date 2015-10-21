@@ -1,17 +1,37 @@
 package com.cs123grpE.restaurantorderingsystem;
 
-import android.app.Activity;
+import java.util.ArrayList;
+
+import android.app.ExpandableListActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ExpandableListView;
+import android.content.Context;
+import android.view.LayoutInflater;
 
-public class Customer extends Activity {
+public class Customer extends ExpandableListActivity {
+	private ArrayList<String> parentItems = new ArrayList<String>();
+    private ArrayList<Object> childItems = new ArrayList<Object>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_customer);
+		
+		ExpandableListView expList = (ExpandableListView) findViewById(R.id.expMenu);
+		expList.setDividerHeight(2);
+		expList.setGroupIndicator(null);
+		expList.setClickable(true);
+		setGroupParents();
+		setChildData();
+		
+		ExpandableAdapter a = new ExpandableAdapter(parentItems, childItems);
+		a.setInflater((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE),
+				this);
+		expList.setAdapter(a);
+		expList.setOnChildClickListener(this);
 	}
 
 	@Override
@@ -52,4 +72,44 @@ public class Customer extends Activity {
 	public void viewCart (View v) {
 		// go to cart screen
 	}
-}
+	
+	public void setGroupParents() {
+		        parentItems.add("Android");
+		        parentItems.add("Core Java");
+		        parentItems.add("Desktop Java");
+		        parentItems.add("Enterprise Java");
+		    }
+
+		    public void setChildData() {
+		        // Android
+		        ArrayList<String> child = new ArrayList<String>();
+		        child.add("Core");
+		        child.add("Games");
+		        childItems.add(child);
+
+		        // Core Java
+		        child = new ArrayList<String>();
+		        child.add("Apache");
+		        child.add("Applet");
+		        child.add("AspectJ");
+		        child.add("Beans");
+		        child.add("Crypto");
+		        childItems.add(child);
+
+		        // Desktop Java
+		        child = new ArrayList<String>();
+		        child.add("Accessibility");
+		        child.add("AWT");
+		        child.add("ImageIO");
+		        child.add("Print");
+		        childItems.add(child);
+
+		        // Enterprise Java
+		        child = new ArrayList<String>();
+		        child.add("EJB3");
+		        child.add("GWT");
+		        child.add("Hibernate");
+		        child.add("JSP");
+		        childItems.add(child);
+		    }
+		}

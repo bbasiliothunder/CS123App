@@ -28,40 +28,43 @@ public final class R {
         public static final int prelimlogo=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f080021;
-        public static final int btnAdmin=0x7f08001d;
-        public static final int btnCancel=0x7f08001a;
-        public static final int btnCart=0x7f08000b;
+        public static final int action_settings=0x7f080024;
+        public static final int btnAdmin=0x7f08001e;
+        public static final int btnCancel=0x7f08001b;
+        public static final int btnCart=0x7f08000c;
         public static final int btnConfigure=0x7f080004;
-        public static final int btnConfirm=0x7f08001b;
-        public static final int btnCustomer=0x7f08001f;
+        public static final int btnConfirm=0x7f08001c;
+        public static final int btnCustomer=0x7f080020;
         public static final int btnEditBill=0x7f080003;
         public static final int btnEditMenu=0x7f080002;
-        public static final int btnKitchen=0x7f08001e;
-        public static final int btnLogin=0x7f080011;
+        public static final int btnKitchen=0x7f08001f;
+        public static final int btnLogin=0x7f080012;
         public static final int btnLogout=0x7f080005;
         public static final int btnOff=0x7f080007;
         public static final int btnOn=0x7f080008;
-        public static final int btnRegister=0x7f080012;
+        public static final int btnRegister=0x7f080013;
         public static final int btnSearch=0x7f08000a;
-        public static final int checkRem=0x7f080010;
+        public static final int checkRem=0x7f080011;
+        public static final int expMenu=0x7f08000b;
         public static final int logo=0x7f080000;
-        public static final int logout=0x7f080020;
-        public static final int textView1=0x7f08000c;
-        public static final int textView2=0x7f08000e;
-        public static final int textView3=0x7f08001c;
-        public static final int textView4=0x7f080013;
-        public static final int textView5=0x7f080014;
-        public static final int textView6=0x7f080016;
-        public static final int textView7=0x7f080018;
+        public static final int logout=0x7f080021;
+        public static final int textView00=0x7f080022;
+        public static final int textView01=0x7f080023;
+        public static final int textView1=0x7f08000d;
+        public static final int textView2=0x7f08000f;
+        public static final int textView3=0x7f08001d;
+        public static final int textView4=0x7f080014;
+        public static final int textView5=0x7f080015;
+        public static final int textView6=0x7f080017;
+        public static final int textView7=0x7f080019;
         public static final int textView8=0x7f080001;
         public static final int textView9=0x7f080006;
-        public static final int txtPass=0x7f08000f;
-        public static final int txtPass2=0x7f080019;
-        public static final int txtResto=0x7f080015;
+        public static final int txtPass=0x7f080010;
+        public static final int txtPass2=0x7f08001a;
+        public static final int txtResto=0x7f080016;
         public static final int txtSearch=0x7f080009;
-        public static final int txtUser=0x7f08000d;
-        public static final int txtUser2=0x7f080017;
+        public static final int txtUser=0x7f08000e;
+        public static final int txtUser2=0x7f080018;
     }
     public static final class layout {
         public static final int activity_admin=0x7f030000;
@@ -70,6 +73,8 @@ public final class R {
         public static final int activity_register=0x7f030003;
         public static final int activity_select_account=0x7f030004;
         public static final int activity_settings=0x7f030005;
+        public static final int group=0x7f030006;
+        public static final int row=0x7f030007;
     }
     public static final class menu {
         public static final int admin=0x7f070000;

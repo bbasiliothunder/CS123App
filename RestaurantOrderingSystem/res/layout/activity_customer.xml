@@ -88,9 +88,11 @@
             android:orientation="vertical"
             android:layout_weight="1" >
             
-            <ListView 
+            <ExpandableListView
+                android:id="@+id/expMenu" 
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent" ></ListView>
+                android:layout_height="match_parent"
+                android:groupIndicator="@null" />
             
         </LinearLayout>
         
