@@ -10,5 +10,7 @@
     <string name="logout">Logout</string>
     <string name="title_activity_customer">Customer</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_edit_bill">Edit Bill</string>
+    <string name="title_activity_edit_menu">Edit Menu</string>
 
 </resources>

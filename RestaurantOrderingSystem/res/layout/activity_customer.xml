@@ -89,7 +89,7 @@
             android:layout_weight="1" >
             
             <ExpandableListView
-                android:id="@+id/expMenu" 
+                android:id="@android:id/list" 
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:groupIndicator="@null" />

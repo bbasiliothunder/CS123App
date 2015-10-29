@@ -12,6 +12,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 
 public class Customer extends ExpandableListActivity {
+	
 	private ArrayList<String> parentItems = new ArrayList<String>();
     private ArrayList<Object> childItems = new ArrayList<Object>();
 
@@ -19,19 +20,19 @@ public class Customer extends ExpandableListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_customer);
-		
-		ExpandableListView expList = (ExpandableListView) findViewById(R.id.expMenu);
+		/**
+		ExpandableListView expList = (ExpandableListView) findViewById(R.id.list);
 		expList.setDividerHeight(2);
 		expList.setGroupIndicator(null);
 		expList.setClickable(true);
 		setGroupParents();
-		setChildData();
+		setChildData();*/
 		
 		ExpandableAdapter a = new ExpandableAdapter(parentItems, childItems);
 		a.setInflater((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE),
 				this);
-		expList.setAdapter(a);
-		expList.setOnChildClickListener(this);
+		setListAdapter(a);
+		//expList.setOnChildClickListener(this); 
 	}
 
 	@Override

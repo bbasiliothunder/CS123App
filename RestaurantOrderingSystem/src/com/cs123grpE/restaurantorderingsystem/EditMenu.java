@@ -1,25 +1,24 @@
 package com.cs123grpE.restaurantorderingsystem;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-public class Admin extends Activity {
+public class EditMenu extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_admin);
+		setContentView(R.layout.activity_edit_menu);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.admin, menu);
+		getMenuInflater().inflate(R.menu.edit_menu, menu);
 		return true;
 	}
 
@@ -35,31 +34,18 @@ public class Admin extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	public void addMenu (View v) {
+		// add a MenuListItem
+		Toast.makeText(this, "You will add a new Menu Item.", Toast.LENGTH_SHORT).show();
+	}
+	
 	public void editMenu (View v) {
-		// go to edit menu screen
-		Intent i = new Intent (this, EditMenu.class);
-		startActivity(i);
+		// edit an existing MenuListItem
+		Toast.makeText(this, "You will edit a Menu Item.", Toast.LENGTH_SHORT).show();
 	}
 	
-	public void editBill (View v) {
-		// go to edit bill screen
-		Intent i = new Intent (this, EditBill.class);
-		startActivity(i);
-	}
-	
-	public void config (View v) {
-		// go to settings screen
-		Intent i = new Intent (this, Settings.class);
-		startActivity(i);
-	}
-	
-	public void logoff (View v) {
-		Intent i = new Intent (this, Login.class);
-		startActivity(i);
-		finish();
-	}
-	
-	public void onBackPressed() {
-		finish();
+	public void deleteMenu (View v) {
+		// delete a MenuListItem
+		Toast.makeText(this, "You will delete a Menu Item.", Toast.LENGTH_SHORT).show();
 	}
 }
