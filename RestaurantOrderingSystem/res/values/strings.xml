@@ -12,5 +12,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_edit_bill">Edit Bill</string>
     <string name="title_activity_edit_menu">Edit Menu</string>
+    <string name="title_activity_add_edit_profile">Add/Edit Profile</string>
+    <string name="title_activity_view_profile">View Item Profile</string>
 
 </resources>

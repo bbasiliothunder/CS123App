@@ -51,6 +51,14 @@
             android:name=".EditMenu"
             android:label="@string/title_activity_edit_menu" >
         </activity>
+        <activity
+            android:name=".AddEditProfile"
+            android:label="@string/title_activity_add_edit_profile" >
+        </activity>
+        <activity
+            android:name=".ViewProfile"
+            android:label="@string/title_activity_view_profile" >
+        </activity>
     </application>
 
 </manifest>

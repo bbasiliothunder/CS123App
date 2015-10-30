@@ -1,6 +1,7 @@
 package com.cs123grpE.restaurantorderingsystem;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,16 +37,16 @@ public class EditMenu extends Activity {
 	
 	public void addMenu (View v) {
 		// add a MenuListItem
-		Toast.makeText(this, "You will add a new Menu Item.", Toast.LENGTH_SHORT).show();
-	}
-	
-	public void editMenu (View v) {
-		// edit an existing MenuListItem
-		Toast.makeText(this, "You will edit a Menu Item.", Toast.LENGTH_SHORT).show();
+		Intent i = new Intent (this, AddEditProfile.class);
+		startActivity(i);
 	}
 	
 	public void deleteMenu (View v) {
-		// delete a MenuListItem
+		// show dialog for confirmation
 		Toast.makeText(this, "You will delete a Menu Item.", Toast.LENGTH_SHORT).show();
+	}
+	
+	public void onResume() {
+		// refresh menu list
 	}
 }

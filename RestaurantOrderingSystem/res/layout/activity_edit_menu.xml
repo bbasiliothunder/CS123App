@@ -24,27 +24,20 @@
         android:gravity="center_horizontal" >
         
         <Button
-            android:id="@+id/btnAddMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Menu Item"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:onClick="addMenu" />
-        
-        <Button
-            android:id="@+id/btnEditMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit Menu Item"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:onClick="editMenu" />
-        
-        <Button
             android:id="@+id/btnDeleteMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Delete Menu Item"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:onClick="deleteMenu" />
+        
+        <Button
+            android:id="@+id/btnAddMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Menu Item"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:onClick="addMenu" />
         
     </LinearLayout>
 
