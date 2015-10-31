@@ -1,37 +1,105 @@
 package com.cs123grpE.restaurantorderingsystem;
-
 import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
 
-import android.app.ExpandableListActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
+import android.widget.ExpandableListView.OnGroupCollapseListener;
+import android.widget.ExpandableListView.OnGroupExpandListener;
+import android.widget.Toast;
 
-public class Customer extends ExpandableListActivity {
+public class Customer extends Activity {
+
 	
-	private ArrayList<String> parentItems = new ArrayList<String>();
-    private ArrayList<Object> childItems = new ArrayList<Object>();
+    	String [] menu = {"BAKED POTATO", "BAKED POTATO3", "BAKED POTATO6", "BAKED POTATO5", "BAKED POTATO4"};
+    private ExpandableAdapter epa;
+    private ExpandableListView exp;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_customer);
-		/**
-		ExpandableListView expList = (ExpandableListView) findViewById(R.id.list);
-		expList.setDividerHeight(2);
-		expList.setGroupIndicator(null);
-		expList.setClickable(true);
-		setGroupParents();
-		setChildData();*/
 		
-		ExpandableAdapter a = new ExpandableAdapter(parentItems, childItems);
-		a.setInflater((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE),
-				this);
-		setListAdapter(a);
+		
+		ListView lv = (ListView)findViewById(R.id.listview1);
+		lv.setAdapter(new ArrayAdapter<String>(this, R.layout.menu_item, menu));
+		
+		exp = (ExpandableListView)findViewById(R.id.list);
+		
+		prepareListData();
+		
+		epa = new ExpandableAdapter(this, listDataHeader, listDataChild);
+		
+		exp.setAdapter(epa);
+		
+		exp.setOnGroupClickListener(new OnGroupClickListener() {
+
+			@Override
+			public boolean onGroupClick(ExpandableListView parent, View v,
+					int groupPosition, long id) {
+				// Toast.makeText(getApplicationContext(),
+				// "Group Clicked " + listDataHeader.get(groupPosition),
+				// Toast.LENGTH_SHORT).show();
+				return false;
+			}
+		});
+
+		// Listview Group expanded listener
+		exp.setOnGroupExpandListener(new OnGroupExpandListener() {
+
+			@Override
+			public void onGroupExpand(int groupPosition) {
+				Toast.makeText(getApplicationContext(),
+						listDataHeader.get(groupPosition) + " Expanded",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		// Listview Group collasped listener
+		exp.setOnGroupCollapseListener(new OnGroupCollapseListener() {
+
+			@Override
+			public void onGroupCollapse(int groupPosition) {
+				Toast.makeText(getApplicationContext(),
+						listDataHeader.get(groupPosition) + " Collapsed",
+						Toast.LENGTH_SHORT).show();
+
+			}
+		});
+
+		// Listview on child click listener
+		exp.setOnChildClickListener(new OnChildClickListener() {
+
+			@Override
+			public boolean onChildClick(ExpandableListView parent, View v,
+					int groupPosition, int childPosition, long id) {
+				// TODO Auto-generated method stub
+				Toast.makeText(
+						getApplicationContext(),
+						listDataHeader.get(groupPosition)
+								+ " : "
+								+ listDataChild.get(
+										listDataHeader.get(groupPosition)).get(
+										childPosition), Toast.LENGTH_SHORT)
+						.show();
+				return false;
+			}
+		});
+		
 		//expList.setOnChildClickListener(this); 
 	}
 
@@ -74,43 +142,36 @@ public class Customer extends ExpandableListActivity {
 		// go to cart screen
 	}
 	
-	public void setGroupParents() {
-		        parentItems.add("Android");
-		        parentItems.add("Core Java");
-		        parentItems.add("Desktop Java");
-		        parentItems.add("Enterprise Java");
-		    }
+	private void prepareListData() {
+		listDataHeader = new ArrayList<String>();
+		listDataChild = new HashMap<String, List<String>>();
 
-		    public void setChildData() {
-		        // Android
-		        ArrayList<String> child = new ArrayList<String>();
-		        child.add("Core");
-		        child.add("Games");
-		        childItems.add(child);
+		// Adding child data
+		listDataHeader.add("MEAT");
+		listDataHeader.add("SOUP");
+		listDataHeader.add("FISH");
 
-		        // Core Java
-		        child = new ArrayList<String>();
-		        child.add("Apache");
-		        child.add("Applet");
-		        child.add("AspectJ");
-		        child.add("Beans");
-		        child.add("Crypto");
-		        childItems.add(child);
+		// Adding child data
+		List<String> top250 = new ArrayList<String>();
+		top250.add("DICK");
+		top250.add("CRISPY PATA");
+		top250.add("ADUBA");
+		top250.add("PATAATIM");
+		top250.add("SINIGANG");
 
-		        // Desktop Java
-		        child = new ArrayList<String>();
-		        child.add("Accessibility");
-		        child.add("AWT");
-		        child.add("ImageIO");
-		        child.add("Print");
-		        childItems.add(child);
+		List<String> nowShowing = new ArrayList<String>();
+		nowShowing.add("CHICKEN NOODLE SOUP");
+		nowShowing.add("SINIGANG SA MISO");
+		nowShowing.add("SPINACH");
+		nowShowing.add("BIRD'S NEST");
 
-		        // Enterprise Java
-		        child = new ArrayList<String>();
-		        child.add("EJB3");
-		        child.add("GWT");
-		        child.add("Hibernate");
-		        child.add("JSP");
-		        childItems.add(child);
-		    }
-		}
+		List<String> comingSoon = new ArrayList<String>();
+		comingSoon.add("TALAKITOK");
+		comingSoon.add("PAKSIW");
+		comingSoon.add("ESCABECHE");
+
+		listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
+		listDataChild.put(listDataHeader.get(1), nowShowing);
+		listDataChild.put(listDataHeader.get(2), comingSoon);
+	}
+}
