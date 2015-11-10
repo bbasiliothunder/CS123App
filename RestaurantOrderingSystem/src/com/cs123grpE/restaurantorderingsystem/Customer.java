@@ -36,7 +36,7 @@ public class Customer extends Activity {
 		
 		
 		ListView lv = (ListView)findViewById(R.id.listview1);
-		lv.setAdapter(new ArrayAdapter<String>(this, R.layout.menu_item, menu));
+		lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));
 		
 		exp = (ExpandableListView)findViewById(R.id.list);
 		
