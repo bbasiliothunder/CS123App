@@ -153,7 +153,6 @@ public class Customer extends Activity {
 
 		// Adding child data
 		List<String> top250 = new ArrayList<String>();
-		top250.add("DICK");
 		top250.add("CRISPY PATA");
 		top250.add("ADUBA");
 		top250.add("PATAATIM");
