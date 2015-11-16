@@ -59,6 +59,10 @@
             android:name=".ViewProfile"
             android:label="@string/title_activity_view_profile" >
         </activity>
+        <activity
+            android:name=".Cart"
+            android:label="@string/title_activity_cart" >
+        </activity>
     </application>
 
 </manifest>
